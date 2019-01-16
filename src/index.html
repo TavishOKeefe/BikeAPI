@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BikeAPIproject</title>
+  </head>
+  <body>
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <h1>Search for Stolen bikes near you</h1>
+            <hr />
+            <form id="bikeInput" method="get">
+              <label for="serial">Serial Number:</label>
+              <input id="serial" type="text" name="serial"></input><br />
+              <label for="manufacturer">Manufacturer:</label>
+              <input id="manufacturer" type="text" name="manufacturer"></input><br />
+              <label for="location">Location:</label>
+              <input id="location" type="text" name="location"></input><br />
+              <label for="distance">Distance:</label>
+              <input id="distance" type="number" name="distance"></input><br />
+              <label for="stolenness">Stolenness:</label>
+              <select id="stolenness" name="stolenness">
+                <option value="non">non</option>
+                <option value="stolen">stolen (default)</option>
+                <option value="proximity">proximity</option>
+                <option value="all">all</option>
+              </select><br />
+              <br />
+              <button id="submitBikeInfo" type="button" name="submitBikeInfo">Search Bike Info</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="output">
+          <table id="apiTableOutput" class="outputTable">
+          </table>
+        </div>
+  </body>
+</html>
