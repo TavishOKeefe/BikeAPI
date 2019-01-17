@@ -8,11 +8,8 @@ class ApiMap {
 
   getGoogleGeocodePromise(addressInput) {
     return googleMapsClient.geocode({
-      address: addressInput }, function (err, response) {
-        if (err) {
-          console.log(err);
-        }
-      }).asPromise()
+      address: addressInput }
+      ).asPromise()
   }
 
   initMap() {
