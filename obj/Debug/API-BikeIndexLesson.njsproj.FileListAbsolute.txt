@@ -1,0 +1,3 @@
+C:\Users\C M\source\repos\glitchwizard\API-BikeIndexLesson\obj\Debug\API-BikeIndexLesson.njsprojAssemblyReference.cache
+C:\Users\C M\source\repos\glitchwizard\API-BikeIndexLesson\obj\Debug\API-BikeIndexLesson.njsproj.CoreCompileInputs.cache
+C:\Users\C M\source\repos\glitchwizard\API-BikeIndexLesson\bin\Microsoft.NodejsTools.WebRole.dll

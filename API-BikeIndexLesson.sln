@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "API-BikeIndexLesson", "API-BikeIndexLesson.njsproj", "{A4458F78-5C70-4324-A59D-99B72FB2F97A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4458F78-5C70-4324-A59D-99B72FB2F97A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4458F78-5C70-4324-A59D-99B72FB2F97A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4458F78-5C70-4324-A59D-99B72FB2F97A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4458F78-5C70-4324-A59D-99B72FB2F97A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E666037-B55D-44BE-ABA8-6C071AF0AD48}
+	EndGlobalSection
+EndGlobal

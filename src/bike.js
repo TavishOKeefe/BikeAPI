@@ -16,7 +16,7 @@ class Bike {
   searchAPIforBikeInfo(serial, manufacturer, location, distance = 10,stolenness = 'stolen') {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://bikeindex.org:443/api/v3/search?page=1&per_page=25&serial=${serial}&manufacturer=${manufacturer}&location=${location}&distance=${distance}&stolenness=${stolenness}&access_token=${process.env.BIKE_API}`;
+      let url = `https://bikeindex.org:443/api/v3/search?page=1&per_page=25&serial=${serial}&manufacturer=${manufacturer}&location=${location}&distance=${distance}&stolenness=${stolenness}`;
       request.onload = function () {
         if (this.status === 200){
           resolve(request.response);
