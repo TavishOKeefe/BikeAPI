@@ -4,14 +4,15 @@ let googleMapsClient = require('@google/maps').createClient({
 
 class ApiMap {
   constructor(){
-
   }
 
   getGoogleGeocodePromise(addressInput) {
-    // addressInput '400 SW 6th Ave #800, Portland, OR 97204'
     return googleMapsClient.geocode({
-      address: addressInput
-    }).asPromise()
+      address: addressInput }, function (err, response) {
+        if (err) {
+          console.log(err);
+        }
+      }).asPromise()
   }
 
   initMap() {

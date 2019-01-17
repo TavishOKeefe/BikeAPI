@@ -13,7 +13,8 @@ module.exports = function (config) {
         ],
         preprocessors: {
             'src/*.js': ['webpack', 'sourcemap'],
-            'spec/*spec.js': ['webpack', 'sourcemap']
+            'spec/*spec.js': ['webpack', 'sourcemap'],
+            '**/*.js' : ['sourcemap']
         },
         plugins: [
             'karma-jquery',

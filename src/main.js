@@ -1,25 +1,45 @@
 import { Bike } from './bike.js';
-import { ApiMap } from './apiMap.js'
+import { ApiMap } from './apiMap.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-import { error } from 'util';
 
 
 $(document).ready(function () {
   $('#mapButton').click(function () {
+    let body = "";
     let googleMapsClient = require('@google/maps').createClient({
       key: process.env.GOOGLE_MAPS_API, Promise: Promise
     });
+
     let geocodeResult = googleMapsClient.geocode({
       address: '400 SW 6th Ave #800, Portland, OR 97204'
     }, function (err, response) {
       if (!err) {
-        console.log("geocode result:");
-        console.log(geocodeResult);
+        body = response;
       }
-    });
+    }).asPromise();
+
+    geocodeResult.then(function(response){
+      console.log("JSON Response:");
+      console.log(body);
+      console.log('response:');
+      console.log(response);
+    })
+  });
+
+  $('#mapButton2').click(function () {
+    let newApiMap = new ApiMap();
+    let addressTestInput = '400 SW 6th Ave #800, Portland, OR 97204';
+    newApiMap.getGoogleGeocodePromise(addressTestInput).then((response) => {
+        console.log("Map button 2 successful:");
+        console.log(response.json.results);
+      })
+      .catch((err) => {
+        console.log("Map button 2 NOT successful:")
+        console.log(err);
+      });
   });
 
   $('#submitBikeInfo').click(function (event) {
