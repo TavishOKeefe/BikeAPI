@@ -1,33 +1,38 @@
 import { Bike } from './bike.js';
-import { ApiMap } from './apiMap.js';
+import { Map } from './Map.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-import { LoadMap } from './LoadMap.js';
+let myMap = new Map();
 
 
 $(document).ready(function () {
-
   $('#mapButton').click(function () {
-    let newApiMap = new ApiMap();
-    let newMapShow = new LoadMap();
     let addressTestInput = '400 SW 6th Ave #800, Portland, OR 97204';
-    newApiMap.getGoogleGeocodePromise(addressTestInput).then(function(response) {
-      console.log("response");
-      console.log(response);
-      let body = response.json.results[0];
-      console.log("response working");
-      console.log(body);
-      console.log(body.geometry.location);
-      return newMapShow.loadGoogleMap(body.geometry.location);
-    });
+    myMap.instantiateMap(addressTestInput, myMap);
   });
 
-  // $('#newMapButton').click(function(){
-  //   let newMapShow = new LoadMap();
-  //   return newMapShow.loadGoogleMap();
-  // });
+  $('#dropMarker').click(function(){
+    let pin = {lat: 45.5206322, lng: -122.6773577};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: pin
+    });
+    let latLong = new google.maps.LatLng(45.5206322,-122.6773577);
+    myMap.googleMapObject = map;
+    var marker = new google.maps.Marker({position: pin, title:"Hello World!"});
+    marker.setMap(myMap.googleMapObject);
+    // myMap.addMarker({lat: 45.5206322, long: -122.6773577}).setMap(myMap);
+  });
+
+  $('#dropMarker2').click(function(){
+    console.log('dropMarker2');
+    let pin = {lat: 45.5206322, lng: -122.6773577};
+    var marker = new google.maps.Marker({position: pin, title:"Hello World!"});
+    marker.setMap(myMap.googleMapObject);
+    // myMap.addMarker({lat: 45.5206322, long: -122.6773577}).setMap(myMap);
+  });
 
 
   $('#submitBikeInfo').click(function (event) {
@@ -47,6 +52,10 @@ $(document).ready(function () {
       let body = JSON.parse(response);
       $('table#apiTableOutput').text('');
       $('table#apiTableOutput').append("<tr><th>Title</th><th>Serial</th><th>Stolen Location</th><</tr>");
+      console.log('myMap:')
+      console.log(myMap);
+      console.log('----');
+      let i = 1;
       body.bikes.forEach(function (bike) {
         $('#apiTableOutput').append('<tr><td class="bikeTitle">' + bike.title + '</td> <td class="bikeSerial">' + bike.serial + '</td> <td class="bikeSolenLocation">' + bike.stolen_location + '</td></tr>');
         $('#apiTableOutput').append('</table>');
@@ -58,7 +67,21 @@ $(document).ready(function () {
         newBikeForList.stolenDate = new Date(parseInt(bike.date_stolen) * 1000);
         newBikeForList.stolenLocation = bike.stolen_location;
         bikeList.push(newBikeForList);
+        console.log("^^^^^^^^^^^^^^^^^^^^^^^^");
+        console.log('made it to bike list drop pin')
+        console.log('i: ' + i);
+        i++;
+        setMarkers(newBikeForList);
       });
     });
+    function setMarkers(bikeList) {
+      console.log("in setMarkers");
+      let pin = {lat: 45.5206322, lng: -122.6773577};
+      var marker = new google.maps.Marker({position: pin, title:"Hello World!"});
+      console.log(marker);
+      console.log("-----------------");
+      console.log("");
+      marker.setMap(myMap.googleMapObject);
+    }
   });
 });
